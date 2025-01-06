@@ -1,20 +1,13 @@
-def send_email(message, recipient, *,sender = "university.help@gmail.com"):
+def single_root_words(root_word , *other_words):
+    same_words = []
 
-    def is_valid_email(email):
-        return '@' in email and (email.endswith ('.com') or email.endswith ('.ru') or email.endswith ('.net'))
+    for word in other_words:
+        if root_word.lower() in word.lower() or word.lower() in root_word.lower():
+            same_words.append(word)
+    return same_words
 
-    if not is_valid_email(sender) or not is_valid_email(recipient):
-        print(f"Невозможно отправить письмо с адреса {sender} на адрес {recipient}")
-        return
-    if sender == recipient:
-        print("Нельзя отправить письмо самому себе!")
-    if sender == "university.help@gmail.com":
-        print(f"Письмо успешно отправлено с адреса {sender} на адрес {recipient}.\nСообщение: {message}")
-    else:
-        print(f"Письмо успешно отправлено с адреса {sender} на адрес {recipient}.\nСообщение: {message}")
+result1 = single_root_words('rich', 'richiest', 'orichalcum', 'cheers', 'richies')
+result2 = single_root_words('Disablement', 'Able', 'Mable', 'Disable', 'Bagel')
 
-
-send_email('Это сообщение для проверки связи', 'vasyok1337@gmail.com')
-send_email('Вы видите это сообщение как лучший студент курса!', 'urban.fan@mail.ru', sender='urban.info@gmail.com')
-send_email('Пожалуйста, исправьте задание', 'urban.student@mail.ru', sender='urban.teacher@mail.uk')
-send_email('Напоминаю самому себе о вебинаре', 'urban.teacher@mail.ru', sender='urban.teacher@mail.ru')
+print(result1)
+print(result2)
